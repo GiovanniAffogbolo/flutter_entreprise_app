@@ -1,4 +1,4 @@
-import 'package:flutter_entreprise_app/data/models/colleague.dart';
+import 'package:flutter_entreprise_app/features/entreprise_app/data/models/colleague.dart';
 import 'package:flutter/material.dart';
 
 class ColleagueDetailsWidget extends StatefulWidget {

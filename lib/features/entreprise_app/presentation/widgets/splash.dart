@@ -1,4 +1,4 @@
-import 'package:flutter_entreprise_app/presentation/pages/home.dart';
+import 'package:flutter_entreprise_app/features/entreprise_app/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:splashscreen/splashscreen.dart';

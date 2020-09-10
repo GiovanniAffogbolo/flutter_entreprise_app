@@ -1,4 +1,4 @@
-import 'package:flutter_entreprise_app/presentation/widgets/colleague_add_widget.dart';
+import 'package:flutter_entreprise_app/features/entreprise_app/presentation/widgets/colleague_add_widget.dart';
 import 'package:flutter/material.dart';
 
 class AddColleague extends StatefulWidget {

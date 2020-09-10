@@ -1,4 +1,4 @@
-import 'package:flutter_entreprise_app/presentation/widgets/widgets.dart';
+import 'package:flutter_entreprise_app/features/entreprise_app/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
