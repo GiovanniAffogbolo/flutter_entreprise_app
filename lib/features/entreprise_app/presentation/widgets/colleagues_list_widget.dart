@@ -60,15 +60,29 @@ class _ColleaguesListState extends State<ColleaguesList> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-                child: Card(
-                  child: ListTile(
-                    onTap: () {
-                      setColleague(index);
-                    },
-                    title: Text(
-                        colleagues[index].nom + ' ' + colleagues[index].prenom),
-                    leading: Icon(Icons.person),
-                  ),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Card(
+                        child: ListTile(
+                            onTap: () {
+                              setColleague(index);
+                            },
+                            title: Text(colleagues[index].nom +
+                                ' ' +
+                                colleagues[index].prenom),
+                            leading: Icon(Icons.person),
+                            trailing: IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed: () {
+                                  setState(() {
+                                    // Remove the colleague when delete icon clicked
+                                    colleagues.removeAt(index);
+                                  });
+                                })),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
