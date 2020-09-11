@@ -1,4 +1,5 @@
 import 'package:flutter_entreprise_app/features/entreprise_app/presentation/pages/add-colleague.dart';
+import 'package:flutter_entreprise_app/features/entreprise_app/presentation/pages/edit-colleague.dart';
 import 'package:flutter_entreprise_app/features/entreprise_app/presentation/pages/home.dart';
 import 'package:flutter_entreprise_app/features/entreprise_app/presentation/pages/colleague-details.dart';
 import 'package:flutter_entreprise_app/features/entreprise_app/presentation/widgets/splash.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => MyHomePage(),
         '/details': (context) => ColleagueDetails(),
         '/addColleague': (context) => AddColleague(),
+        '/editColleague': (context) => EditColleague(),
       },
     );
   }

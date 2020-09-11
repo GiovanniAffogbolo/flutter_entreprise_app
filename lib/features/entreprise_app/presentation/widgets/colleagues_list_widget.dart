@@ -47,6 +47,24 @@ class _ColleaguesListState extends State<ColleaguesList> {
     Navigator.pushNamed(context, '/details', arguments: colleague);
   }
 
+  void editColleague(index, popColleague) {
+    final tile = colleagues.firstWhere(
+        (item) =>
+            item.nom == colleagues[index].nom &&
+            item.prenom == colleagues[index].prenom &&
+            item.mail == colleagues[index].mail &&
+            item.telephone == colleagues[index].telephone &&
+            item.fonction == colleagues[index].fonction,
+        orElse: null);
+    if (tile != null) {
+      tile.nom = popColleague['nom'];
+      tile.prenom = popColleague['prenom'];
+      tile.mail = popColleague['mail'];
+      tile.telephone = popColleague['phone'];
+      tile.fonction = popColleague['function'];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,21 +83,45 @@ class _ColleaguesListState extends State<ColleaguesList> {
                     Expanded(
                       child: Card(
                         child: ListTile(
-                            onTap: () {
-                              setColleague(index);
-                            },
-                            title: Text(colleagues[index].nom +
-                                ' ' +
-                                colleagues[index].prenom),
-                            leading: Icon(Icons.person),
-                            trailing: IconButton(
-                                icon: Icon(Icons.delete),
+                          onTap: () {
+                            setColleague(index);
+                          },
+                          title: Text(colleagues[index].nom +
+                              ' ' +
+                              colleagues[index].prenom),
+                          leading: Icon(Icons.person),
+                          trailing: Wrap(spacing: 0, children: <Widget>[
+                            IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () async {
+                                  // Wait for the new datas from the colleague to modify
+                                  Colleague colleague = colleagues[index];
+                                  dynamic popColleague =
+                                      await Navigator.pushNamed(
+                                          context, '/editColleague',
+                                          arguments: colleague);
+                                  if (popColleague == null) {
+                                    return;
+                                  } else {
+                                    setState(() {
+                                      // Then edit it
+                                      editColleague(index, popColleague);
+                                    });
+                                  }
+                                }),
+                            IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red[500],
+                                ),
                                 onPressed: () {
                                   setState(() {
                                     // Remove the colleague when delete icon clicked
                                     colleagues.removeAt(index);
                                   });
-                                })),
+                                }),
+                          ]),
+                        ),
                       ),
                     ),
                   ],
